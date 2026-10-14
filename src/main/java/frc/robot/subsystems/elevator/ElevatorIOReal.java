@@ -1,12 +1,10 @@
 package frc.robot.subsystems.elevator;
 
 import com.ctre.phoenix6.controls.MotionMagicTorqueCurrentFOC;
-import com.ctre.phoenix6.controls.PositionTorqueCurrentFOC;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import badgerutils.advantagekit.cancoder.CANCoderSignals;
-import badgerutils.advantagekit.talonfx.LoggedTalonFX;
 import badgerutils.advantagekit.talonfx.TalonFXSignals;
 import badgerutils.motor.MotorGroup;
 import edu.wpi.first.units.measure.Angle;
