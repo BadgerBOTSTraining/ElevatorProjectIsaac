@@ -4,14 +4,16 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Inches;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.subsystems.shooter.Shooter;
-import frc.robot.subsystems.shooter.ShooterIO;
-import frc.robot.subsystems.shooter.ShooterIOEmpty;
-import frc.robot.subsystems.shooter.ShooterIOReal;
+import frc.robot.subsystems.elevator.Elevator;
+import frc.robot.subsystems.elevator.ElevatorIO;
+import frc.robot.subsystems.elevator.ElevatorIOFake;
+import frc.robot.subsystems.elevator.ElevatorIOReal;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -22,22 +24,22 @@ import frc.robot.subsystems.shooter.ShooterIOReal;
 public class RobotContainer {
   private final CommandXboxController controller = new CommandXboxController(0);
 
-  private final Shooter shooter;
+  private final Elevator elevator;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     switch (Constants.currentMode) {
       case REAL:
-        shooter = new Shooter(new ShooterIOReal());
+        elevator = new Elevator(new ElevatorIOReal());
         break;
 
       case SIM:
-        shooter = new Shooter(new ShooterIOReal());
+        elevator = new Elevator(new ElevatorIOReal());
         break;
 
       default:
         // Replayed robot, disable IO implementations
-        shooter = new Shooter(new ShooterIOEmpty());
+        elevator = new Elevator(new ElevatorIOFake());
         break;
     }
 
@@ -55,10 +57,26 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
+  //   controller.a().whileTrue(Commands.startEnd(
+  //     () -> shooter.setDutyCycle(.5),
+  //     () -> shooter.setDutyCycle(0),
+  //     shooter));
     controller.a().whileTrue(Commands.startEnd(
-      () -> shooter.setDutyCycle(.5),
-      () -> shooter.setDutyCycle(0),
-      shooter));
+      () -> elevator.setPosition(Inches.of(0)),
+      () -> {}
+      ));
+    controller.b().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(8)),
+      () -> {}
+      ));
+    controller.x().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(16)),
+      () -> {}
+      ));
+    controller.y().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(32)),
+      () -> {}
+      ));
   }
 
   /**
