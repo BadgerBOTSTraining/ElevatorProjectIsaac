@@ -17,6 +17,8 @@ import edu.wpi.first.units.measure.AngularVelocity;
 public class ElevatorConstants {
     public static final double KP = 0, KD = 0, KS = 0, KG = 0;
 
+    public static final double INCHES_TO_ROTATIONS=1;
+
     private static final double MOTOR_TO_SENSOR_RATIO= 1, SENSOR_TO_MECHANISM_RATIO = 1;
     
     public static final AngularVelocity MAX_VELOICTY = RotationsPerSecond.of(100);

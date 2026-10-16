@@ -4,7 +4,7 @@ import org.littletonrobotics.junction.AutoLog;
 
 import badgerutils.advantagekit.cancoder.LoggedCANCoder;
 import badgerutils.advantagekit.talonfx.LoggedTalonFX;
-import edu.wpi.first.units.measure.Angle;
+import edu.wpi.first.units.measure.Distance;
 
 public interface ElevatorIO {
     @AutoLog
@@ -16,5 +16,5 @@ public interface ElevatorIO {
 
     public void updateInputs(ElevatorIOInputs inputs);
     
-    public void setPosition(Angle position);
+    public void setPosition(Distance height);
 }
