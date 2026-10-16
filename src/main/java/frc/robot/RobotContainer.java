@@ -62,7 +62,7 @@ public class RobotContainer {
   //     () -> shooter.setDutyCycle(0),
   //     shooter));
     controller.a().whileTrue(Commands.startEnd(
-      () -> elevator.setPosition(Inches.of(4)),
+      () -> elevator.setPosition(Inches.of(0)),
       () -> {}
       ));
     controller.b().whileTrue(Commands.startEnd(

@@ -12,22 +12,22 @@ import badgerutils.motor.MotorGroup;
 import edu.wpi.first.units.measure.Distance;
 
 public class ElevatorIOReal implements ElevatorIO{
-    private final TalonFX leftmotor = new TalonFX(0);
-    private final TalonFX rightmotor = new TalonFX(1);
+    private final TalonFX leftMotor = new TalonFX(0);
+    private final TalonFX rightMotor = new TalonFX(1);
     private final CANcoder encoder = new CANcoder(2);
 
-    private final TalonFXSignals leftMotorSignals = new TalonFXSignals(leftmotor);
-    private final TalonFXSignals rightMotorSignals = new TalonFXSignals(rightmotor);
+    private final TalonFXSignals leftMotorSignals = new TalonFXSignals(leftMotor);
+    private final TalonFXSignals rightMotorSignals = new TalonFXSignals(rightMotor);
     private final CANCoderSignals encoderSignals = new CANCoderSignals(encoder);
 
-    private final MotorGroup motorGroup = new MotorGroup(leftmotor,rightmotor);
+    private final MotorGroup motorGroup = new MotorGroup(leftMotor,rightMotor);
 
     private final MotionMagicTorqueCurrentFOC positionRequest = new MotionMagicTorqueCurrentFOC(0);
 
 
     public ElevatorIOReal(){
-        leftmotor.getConfigurator().apply(ElevatorConstants.MOTOR_CONFIG_CW);
-        rightmotor.getConfigurator().apply(ElevatorConstants.MOTOR_CONFIG_CCW);
+        leftMotor.getConfigurator().apply(ElevatorConstants.MOTOR_CONFIG_CW);
+        rightMotor.getConfigurator().apply(ElevatorConstants.MOTOR_CONFIG_CCW);
     }
 
     @Override
