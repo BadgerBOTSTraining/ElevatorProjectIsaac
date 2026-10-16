@@ -23,6 +23,11 @@ public class ElevatorIOReal implements ElevatorIO{
     private final MotionMagicTorqueCurrentFOC positionRequest = new MotionMagicTorqueCurrentFOC(0);
 
 
+    public ElevatorIOReal(){
+        leftmotor.getConfigurator().apply(ElevatorConstants.MOTOR_CONFIG_CW);
+        rightmotor.getConfigurator().apply(ElevatorConstants.MOTOR_CONFIG_CCW);
+    }
+
     @Override
     public void updateInputs(ElevatorIOInputs inputs){
         inputs.leftMotor = leftMotorSignals.createLoggedTalonFX();
