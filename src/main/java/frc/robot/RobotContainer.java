@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.Inches;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -59,6 +61,22 @@ public class RobotContainer {
   //     () -> shooter.setDutyCycle(.5),
   //     () -> shooter.setDutyCycle(0),
   //     shooter));
+    controller.a().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(4)),
+      () -> {}
+      ));
+    controller.b().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(8)),
+      () -> {}
+      ));
+    controller.x().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(16)),
+      () -> {}
+      ));
+    controller.y().whileTrue(Commands.startEnd(
+      () -> elevator.setPosition(Inches.of(32)),
+      () -> {}
+      ));
   }
 
   /**
